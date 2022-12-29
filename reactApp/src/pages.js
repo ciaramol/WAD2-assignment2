@@ -23,3 +23,13 @@ export const Profile = () => {
 export const HomePage = () => {
     return <h2>Home page</h2>
 }
+
+export const MoviesTest = () => {
+    const context = useContext(MoviesContext);
+    return <>
+        <h2> Movies Test</h2>
+        <div>
+            {context.movies.results.map(m => { return <> {m.id}, {m.title} <br /></> })}
+        </div>
+    </>
+}
