@@ -56,7 +56,7 @@ export async function loadUpcomingMovies() {
   } catch (err) {
     console.error(`failed to Load Upcoming Movies Data: ${err}`);
   }
-}
+};
 
 if (process.env.SEED_DB) {
   loadUsers();

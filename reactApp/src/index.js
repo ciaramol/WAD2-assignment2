@@ -16,6 +16,9 @@ import ActorDetailsPage from './pages/actorDetailsPage';
 import TVHomePage from "./pages/tvHomePage";
 import TVPage from "./pages/tvDetailsPage";
 import PopularTVPage from "./pages/popularTVPage";
+import { PublicPage } from "./pages";
+import LoginPage from "./loginPage";
+import SignUpPage from "./signUpPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,14 +41,18 @@ const App = () => {
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route exact path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
-            <Route exact path="/movies/popular" element={<PopularMoviesPage /> } />
+            <Route exact path="/movies/popular" element={<PopularMoviesPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/actor/:id" element={<ActorDetailsPage/>}/>
-            <Route path="/tv" element={<TVHomePage/>}/>
-            <Route path="/tv/:id" element={<TVPage/>}/>
-            <Route path="/tv/popular" element={<PopularTVPage/>}/>
+            <Route path="/actor/:id" element={<ActorDetailsPage />} />
+            <Route path="/tv" element={<TVHomePage />} />
+            <Route path="/tv/:id" element={<TVPage />} />
+            <Route path="/tv/popular" element={<PopularTVPage />} />
+            <Route path="/public" component={PublicPage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpPage} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
