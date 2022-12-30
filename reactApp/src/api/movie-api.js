@@ -20,7 +20,7 @@ export const signup = (username, password) => {
 
 export const getMovies = () => {
     return fetch(
-        '/api/movies', {
+        '/api/movies/tmdb/upcoming', {
         headers: {
             'Authorization': window.localStorage.getItem('token')
         }
@@ -46,4 +46,26 @@ export const getTopRatedMovies = () => {
         }
     }
     ).then(res => res.json());
+};
+
+export const getMovie = (args) => {
+    // console.log(args)
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+        //`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+        `/api/movies/${id}`, {
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    }
+    ).then((response) => {
+        if (!response.ok) {
+            throw new Error(response.json().message);
+        }
+        return response.json();
+    })
+        .catch((error) => {
+            throw error
+        });
 };
