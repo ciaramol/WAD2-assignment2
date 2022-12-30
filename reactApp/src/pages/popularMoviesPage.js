@@ -1,5 +1,5 @@
 import React from "react";
-import { getPopularMovies } from "../api/tmdb-api";
+import { getTopRatedMovies } from "../api/movie-api";
 import PageTemplate from '../components/movieComponents/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -7,7 +7,7 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 
 const PopularMoviesPage = (props) => {
 
-  const { data, error, isLoading, isError } = useQuery('popular', getPopularMovies)
+  const { data, error, isLoading, isError } = useQuery('popular', getTopRatedMovies)
 
   if (isLoading) {
     return <Spinner />

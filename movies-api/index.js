@@ -3,6 +3,7 @@ import express from 'express';
 import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
 import upcomingMoviesRouter from './api/upcomingMovies';
+import topRatedMoviesRouter from './api/topRatedMovies';
 import './seedData';
 import './db';
 import usersRouter from './api/users';
@@ -32,7 +33,7 @@ app.use('/api/movies', passport.authenticate('jwt', { session: false }), moviesR
 
 app.use('/api/upcomingMovies', passport.authenticate('jwt', { session: false }), upcomingMoviesRouter);
 
-//app.use('/api/topRatedMovies', passport.authenticate('jwt', { session: false }), topRatedMoviesRouter);
+app.use('/api/topRatedMovies', passport.authenticate('jwt', { session: false }), topRatedMoviesRouter);
 
 app.use('/api/genres', genresRouter);
 
