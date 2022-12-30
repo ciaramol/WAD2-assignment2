@@ -44,14 +44,7 @@ const App = () => {
               <Route path="/reviews/:id" element={<MovieReviewPage />} />
               <Route exact path="/movies/upcoming" element={<UpcomingMoviesPage />} />
               {/* <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} /> */}
-              <Route
-                exact path="/movies/favourites"
-                element={
-                  <PrivateRoute>
-                    <FavouriteMoviesPage />
-                  </PrivateRoute>
-                }
-              />
+              <Route exact path="/movies/favourites" element={<PrivateRoute> <FavouriteMoviesPage /> </PrivateRoute>} />
               <Route exact path="/movies/popular" element={<PopularMoviesPage />} />
               <Route path="/movies/:id" element={<MoviePage />} />
               <Route path="/" element={<HomePage />} />
