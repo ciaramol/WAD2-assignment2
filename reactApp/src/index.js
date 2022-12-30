@@ -1,8 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
-//import HomePage from "./pages/homePage";
-import { HomePage, MoviesTest } from "./pages";
+import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
@@ -17,10 +16,6 @@ import ActorDetailsPage from './pages/actorDetailsPage';
 import TVHomePage from "./pages/tvHomePage";
 import TVPage from "./pages/tvDetailsPage";
 import PopularTVPage from "./pages/popularTVPage";
-import { PublicPage } from "./pages";
-import LoginPage from "./loginPage";
-import SignUpPage from "./signUpPage";
-import MovieProvider from "./moviesContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,26 +32,22 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader /> {/*New Header */}
-        <MovieProvider>
+        <MoviesContextProvider>
           <Routes>
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route exact path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
-            <Route exact path="/movies/popular" element={<PopularMoviesPage />} />
+            <Route exact path="/movies/popular" element={<PopularMoviesPage /> } />
             <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/" element={<MoviesTest />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/actor/:id" element={<ActorDetailsPage />} />
-            <Route path="/tv" element={<TVHomePage />} />
-            <Route path="/tv/:id" element={<TVPage />} />
-            <Route path="/tv/popular" element={<PopularTVPage />} />
-            <Route path="/public" component={PublicPage} />
-            <Route exact path="/" component={HomePage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignUpPage} />
+            <Route path="/actor/:id" element={<ActorDetailsPage/>}/>
+            <Route path="/tv" element={<TVHomePage/>}/>
+            <Route path="/tv/:id" element={<TVPage/>}/>
+            <Route path="/tv/popular" element={<PopularTVPage/>}/>
           </Routes>
-        </MovieProvider>
+        </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
@@ -67,16 +58,17 @@ const rootElement = createRoot(document.getElementById("root"))
 rootElement.render(<App />);
 
 
+
 // import React from "react";
 // import ReactDOM from "react-dom";
-// import { BrowserRouter, Route, Routes, Navigate, Link, Redirect } from "react-router-dom";
+// import { BrowserRouter, Navigate, Route, Routes, Link } from "react-router-dom";
 // import { PublicPage, Movies, Profile, HomePage } from "./pages";
 // import LoginPage from "./loginPage";
 // import AuthProvider from "./authContext";
 // import PrivateRoute from "./privateRoute";
 // import AuthHeader from "./authHeader";
 // import SignUpPage from "./signUpPage";
-// import MovieProvider from "./moviesContext";
+// import MoviesProvider from "./moviesContext";
 
 // const App = () => {
 //   return (
@@ -97,17 +89,31 @@ rootElement.render(<App />);
 //             <Link to="/profile">Profile</Link>
 //           </li>
 //         </ul>
-//         <MovieProvider>
+//         <MoviesProvider>
 //           <Routes>
-//             <Route path="/public" element={PublicPage} />
-//             <Route exact path="/" element={HomePage} />
-//             <Route path="/login" element={LoginPage} />
-//             <Route path="/signup" element={SignUpPage} />
-//             <Route path="/movies" element={Movies} />
-//             <Route path="/profile" element={Profile} />
-
+//             <Route path="/public" element={<PublicPage />} />
+//             <Route exact path="/" element={<HomePage />} />
+//             <Route path="/signup" element={<SignUpPage />} />
+//             <Route path="/login" element={<LoginPage />} />
+//             <Route
+//               path="/movies"
+//               element={
+//                 <PrivateRoute>
+//                   <Movies />
+//                 </PrivateRoute>
+//               }
+//             />
+//             <Route
+//               path="/profile"
+//               element={
+//                 <PrivateRoute>
+//                   <Profile />
+//                 </PrivateRoute>
+//               }
+//             />
+//             <Route path="*" element={<Navigate to="/" replace />} />
 //           </Routes>
-//         </MovieProvider>
+//         </MoviesProvider>
 //       </AuthProvider>
 //     </BrowserRouter>
 //   );

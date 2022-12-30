@@ -20,30 +20,9 @@ export const signup = (username, password) => {
 
 export const getMovies = () => {
     return fetch(
-        '/api/movies', {
-            headers: {
-                'Authorization': window.localStorage.getItem('token')
-            }
+       '/api/movies',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      }
     }
     ).then(res => res.json());
-};
-
-export const getUpcomingMovies = () => {
-    return fetch(
-        `/api/upcomingMovies`, {
-        headers: {
-            'Authorization': window.localStorage.getItem('token')
-        }
-    }
-    ).then(res => res.json());
-};
-
-export const getGenres = () => {
-    return fetch(
-        `/api/genres`, {
-        headers: {
-            'Authorization': window.localStorage.getItem('token')
-        }
-    }
-    ).then(res => res.json());
-};
+  };
