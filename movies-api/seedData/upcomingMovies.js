@@ -119,3 +119,5 @@ export const upcomingMovies = [
         "vote_count": 215
     },
 ];
+
+export default upcomingMovies;
