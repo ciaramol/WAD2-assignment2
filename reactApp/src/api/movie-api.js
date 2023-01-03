@@ -54,7 +54,7 @@ export const getMovie = (args) => {
     const { id } = idPart;
     return fetch(
         //`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-        `/api/movies/${id}`, {
+        `/api/movies/tmdb/upcoming/${id}`, {
         headers: {
             'Authorization': window.localStorage.getItem('token')
         }
@@ -69,3 +69,17 @@ export const getMovie = (args) => {
             throw error
         });
 };
+
+export const getCredits = (id) => {
+
+    return fetch(
+        `/api/movies/tmdb/${id}/credits`, {
+            headers: {
+                'Authorization': window.localStorage.getItem('token')
+            }
+    }
+    ).then(res => res.json());
+};
+
+
+

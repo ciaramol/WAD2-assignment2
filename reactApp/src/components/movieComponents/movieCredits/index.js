@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import img from '../../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
-import { getCredits } from "../../../api/tmdb-api";
+import { getCredits } from "../../../api/movie-api";
 
 export default function Credits(movie) {
     const [credits, setCredits] = useState([]);
