@@ -49,34 +49,36 @@ export const getTopRatedMovies = () => {
 };
 
 export const getMovie = (args) => {
-    // console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
-        //`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-        `/api/movies/tmdb/upcoming/${id}`, {
-        headers: {
-            'Authorization': window.localStorage.getItem('token')
-        }
+        `/api/movies/${id}`, {
+            headers: {
+                'Authorization': window.localStorage.getItem('token')
+            }
     }
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
+    ).then(res => res.json());
 };
 
 export const getCredits = (id) => {
 
     return fetch(
         `/api/movies/tmdb/${id}/credits`, {
-            headers: {
-                'Authorization': window.localStorage.getItem('token')
-            }
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    }
+    ).then(res => res.json());
+};
+
+export const getActor = (args) => {
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+        `/api/actors/tmdb/${id}`, {
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
     }
     ).then(res => res.json());
 };

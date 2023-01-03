@@ -4,6 +4,7 @@ import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
 import upcomingMoviesRouter from './api/upcomingMovies';
 import topRatedMoviesRouter from './api/topRatedMovies';
+import actorsRouter from './api/actors';
 import './seedData';
 import './db';
 import usersRouter from './api/users';
@@ -30,6 +31,8 @@ app.use(passport.initialize());
 app.use(express.json());
 
 app.use('/api/movies', passport.authenticate('jwt', { session: false }), moviesRouter);
+
+app.use('/api/actors', passport.authenticate('jwt', { session: false }), actorsRouter);
 
 app.use('/api/upcomingMovies', passport.authenticate('jwt', { session: false }), upcomingMoviesRouter);
 

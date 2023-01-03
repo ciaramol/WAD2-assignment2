@@ -70,7 +70,7 @@ router.get('/tmdb/upcoming', asyncHandler(async (req, res) => {
     res.status(200).json(upcomingMovies);
 }));
 
-router.get('/tmdb/upcoming/:id', asyncHandler(async (req, res) => {
+router.get('/tmdb/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const movie = await getMovie(id);
     res.status(200).json(movie);
