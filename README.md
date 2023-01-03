@@ -1,18 +1,15 @@
 # Assignment 2 - Web API.
 ​
-Name: Ciara Mollot
+Name: Ciara Molloy
 ​
 ## Features.
-​
-[A bullet-point list of the ADDITIONAL features/endpoints you have implemented in the API **THAT WERE NOT IN THE LABS** ]. 
 ​
  + Some calls routed through new API, not TV Shows
 ​
  + Top rated movies added to API
 ​
 ## Installation Requirements
-​
-Describe what needs to be on the machine to run the API (Node v?, NPM, MongoDB instance, any other 3rd party software not in the package.json). 
+(Note: Untested)
 ​
 Clone the repo and open in Visual Studio Code
 
@@ -74,7 +71,6 @@ FAST_REFRESH=false
 ```
 ​
 ## API Design
-Give an overview of your web API design, perhaps similar to the following: 
 ​
 |  |  GET | POST | PUT | DELETE
 | -- | -- | -- | -- | -- 
