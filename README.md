@@ -6,66 +6,95 @@ Name: Ciara Mollot
 ​
 [A bullet-point list of the ADDITIONAL features/endpoints you have implemented in the API **THAT WERE NOT IN THE LABS** ]. 
 ​
- + 
+ + Some calls routed through new API, not TV Shows
 ​
- + Feature 2 - .......
-​
- + Feature 3 - ......
-​
-   e.g.
-​
- + Get Similar Movies:  Get a list of similar movies using a movie ID. 
+ + Top rated movies added to API
 ​
 ## Installation Requirements
 ​
 Describe what needs to be on the machine to run the API (Node v?, NPM, MongoDB instance, any other 3rd party software not in the package.json). 
 ​
-Describe getting/installing the software, perhaps:
-​
+Clone the repo and open in Visual Studio Code
+
+Navigate to movies-api
 ```bat
-git clone http:\myrepo.git
+cd movies-api
 ```
-​
-followed by installation
-​
+​Run the following commands
 ```bat
-git install
+npm install --save-dev babel-cli babel-preset-env nodemon eslint babel-eslint
+```
+(Accept default values)
+```bat
+npm install --save dotenv express
+npm install --save uniqid
+npm install -save mongoose
+npm install express-async-handler --save
+npm install --save express-session
+npm install --save passport passport-jwt jsonwebtoken bcrypt-nodejs
+```
+
+Install Mongodb and run the following command in the root directory
+```bat
+mongod -dbpath db
+```
+
+Then navigate to reactApp
+```bat
+cd ../reactApp
+```
+And run the following commands
+```bat
+npm install
+npm start
+```
+Navigate to movies-api
+```bat
+cd ../movies-api
+npm start
 ```
 ​
 ## API Configuration
-Describe any configuration that needs to take place before running the API. For example, creating an ``.env`` and what variables to put in it. Give an example of how this might be structured/done.
-**REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB,** just placeholders as indicated below:
+In movies-api, your .env file should look like this:
 ​
 ```bat
 NODE_ENV=development
 PORT=8080
-HOST=
-mongoDB=YourMongoURL
-seedDb=true
-secret=YourJWTSecret
+HOST=localhost
+MONGO_DB=mongodb://localhost:27017/movies_db
+SEED_DB=True
+SECRET= <YourJWTSecret>
+TMDB_KEY=<YourTMDBKey>
 ```
-​
+
+In reactApp, your .env file should look like this:
+```bat
+TMDB_KEY=<YourTMDBKey>
+FAST_REFRESH=false
+```
 ​
 ## API Design
 Give an overview of your web API design, perhaps similar to the following: 
 ​
 |  |  GET | POST | PUT | DELETE
 | -- | -- | -- | -- | -- 
-| /api/movies |Gets a list of movies | N/A | N/A |
+| /api/movies |Gets a list of movies | N/A | N/A | N/A
 | /api/movies/{movieid} | Get a Movie | N/A | N/A | N/A
-| /api/movies/{movieid}/reviews | Get all reviews for movie | Create a new review for Movie | N/A | N/A  
-| ... | ... | ... | ... | ...
-​
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
+| /api/tmdb/topRatedMovies | Gets a list of top rated movies | N/A | N/A | N/A
+| /api/tmdb/upcomingMovies | Gets a list of top rated movies | N/A | N/A | N/A
+| /api/users | Gets users | Logs in | N/A | N/A
+| /api/users?action=register| N/a | Registers a new user | N/A | N/A
+
 ​
 ​
 ## Security and Authentication
-Give details of authentication/ security implemented on the API(e.g. passport/sessions). Indicate which routes are protected. **REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB**
+Only the favourites route is protected. It requires a valid login to view.
 ​
 ## Integrating with React App
 ​
-Describe how you integrated your React app with the API. Perhaps link to the React App repo and give an example of an API call from React App. For example: 
-​
+React App: https://github.com/ciaramol/WAD2-Assignment1
+
+Example API call:​
 ~~~Javascript
 export const getMovies = () => {
   return fetch(
@@ -82,8 +111,8 @@ export const getMovies = () => {
 ​
 ## Extra features
 ​
-. . Briefly explain any non-standard features, functional or non-functional, developed for the app.  
+N/A
 ​
 ## Independent learning.
 ​
-. . State the non-standard aspects of React/Express/Node (or other related technologies) that you researched and applied in this assignment . .  
+N/A
